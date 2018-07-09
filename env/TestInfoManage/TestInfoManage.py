@@ -1,7 +1,16 @@
-from flask import Flask
+from flask import Flask,Blueprint
+from apps.common import at as common_at
+from apps.front import at as front_at
+from flask_wtf import CSRFProtect
+import config
 
-app = Flask(__name__)
-
+def create_app():
+    app=Flask(__name__)
+    app.config.from_object(config)
+    app.register_blueprint(common_at)
+    app.register_blueprint(front_at)
+    CSRFProtect(app)
+    return app
 
 @app.route('/')
 def hello_world():
@@ -9,4 +18,5 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run()
+    app=create_app()
+    app.run(port=8000)
