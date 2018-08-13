@@ -1,0 +1,34 @@
+{% extends "base.html"  %}
+{% block content %}
+    <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <ul class="layui-nav layui-nav-tree">
+            <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">接口列表</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="#">接口列表</a></dd>
+                    <dd><a href="#">接口用例</a></dd>
+                    <dd><a href="#">接口用例步骤</a></dd>
+                    <dd><a href="#">SQL管理</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+          <a href="javascript:;">系统管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">部门管理</a></dd>
+            <dd><a href="javascript:;">项目管理</a></dd>
+            <dd><a href="javascript:;">客户端管理</a></dd>
+            <dd><a href="javascript:;">数据库配置</a></dd>
+          </dl>
+        </li>
+        </ul>
+    </div>
+    </div>
+  <!--内容主体右侧区域设置-->
+    <div class="layui-body">
+    </div>
+
+    <div class="layui-footer">
+    <!-- 底部固定区域 -->
+  </div>
+{% endblock %}

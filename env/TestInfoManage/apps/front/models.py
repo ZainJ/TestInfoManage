@@ -2,7 +2,7 @@ from exts import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
+#用户model
 class User(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -27,3 +27,12 @@ class User(db.Model):
     def check_password(self, raw_password):
         result = check_password_hash(self._password, raw_password)
         return result
+
+#部门model
+class Department(db.Model):
+    __tablename__='department'
+    id=db.Column(db.Integer,primary_key=True,autoincrement=True)
+    departmentname=db.Column(db.String(20),nullable=False,unique=True)
+    departmentdescription=db.Column(db.String(100),nullable=True)
+    creator=db.Column(db.String(20),nullable=False)
+    join_time=db.Column(db.DateTime,default=datetime.now)

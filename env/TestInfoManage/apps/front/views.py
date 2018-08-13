@@ -7,18 +7,21 @@ from .decorators import login_required,keep_login_status
 at = Blueprint('front', __name__)
 
 
-@at.route('/index/')
+@at.route('/interfacemanage/')
 @login_required
-def index():
-    return render_template('index.html')
-
-
+def interfacemanage():
+    return render_template('interfacemanage.html')
+@at.route('/bigscreen/')
+@login_required
+def bigscreen():
+    return render_template('bigscreen.html')
 
 @at.route('/logout/')
 @login_required
 def logout():
     del session[config.CMS_USER_ID]
     return redirect(url_for('front.login'))
+
 
 class Register(views.MethodView):
     decorators = [keep_login_status]
@@ -53,28 +56,12 @@ class Login(views.MethodView):
             user = User.query.filter_by(username=username).first()
             if user and user.check_password(password):
                 session[config.CMS_USER_ID] = user.id
-                return redirect(url_for('front.index'))
+                return redirect(url_for('front.interfacemanage'))
             else:
                 return self.get(message='用户名或密码错误')
         else:
             message = form.get_error()
             return self.get(message=message)
-
-
-@at.route('/interfacelist/')
-@login_required
-def interfacelist():
-    return render_template('interfacelist.html',message="message")
-
-@at.route('/interfacecase/')
-@login_required
-def interfacecase():
-    return render_template('interfacecase.html')
-
-@at.route('/interfaceperformance/')
-@login_required
-def interfaceperformance():
-    return render_template('interfaceperformance.html')
 
 at.add_url_rule('/register/', view_func=Register.as_view('register'))
 at.add_url_rule('/', view_func=Login.as_view('login'))

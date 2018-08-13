@@ -1,0 +1,42 @@
+{% from "common/_macros.html" import static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ static('layui/css/layui.css') }}">
+    <script src="{{ static('layui/layui.js') }}"></script>
+    <script src="{{ static('js/base/base.js') }}"></script>
+    {% block header %}
+    {% endblock %}
+</head>
+<body class="layui-layout-body">
+<!--头部区域设置-->
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">自动化测试平台</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="{{ url_for('front.interfacemanage') }}">接口管理</a></li>
+      <li class="layui-nav-item"><a href="{{ url_for('front.bigscreen') }}">大屏</a></li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <i class="layui-icon layui-icon-username">{{ g.user.username }}</i>
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="#">基本资料</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="{{ url_for('front.logout') }}">退出</a></li>
+    </ul>
+  </div>
+
+<!--内容主体左侧区域设置-->
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
