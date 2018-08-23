@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% from "common/_macros.html" import static%}
+{% block title %}接口管理{% endblock %}
+{% block header %}
+    <script type="text/javascript" src="{{ static('js/interfacemanage/interfacemanage.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <ul class="layui-nav layui-nav-tree">
+            <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">接口管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="{{ url_for('front.interfacelist') }}">接口列表</a></dd>
+                    <dd><a href="{{ url_for('front.interfacecase') }}">接口用例</a></dd>
+                    <dd><a href="{{ url_for('front.publicparameter') }}">公共参数</a></dd>
+                    <dd><a href="{{ url_for('front.sqlmanage') }}">SQL管理</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+          <a href="javascript:;">系统管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="{{ url_for('front.project') }}">项目管理</a></dd>
+            <dd><a href="{{ url_for('front.moudel') }}">测试模块</a></dd>
+            <dd><a href="{{ url_for('front.clientmanage') }}">客户端管理</a></dd>
+            <dd><a href="{{ url_for('front.dbmanage') }}">数据库配置</a></dd>
+          </dl>
+        </li>
+        </ul>
+    </div>
+    </div>
+  <!--内容主体右侧区域设置-->
+    <div class="layui-body">
+    {% block rightcontent %}{% endblock %}
+    </div>
+
+    <div class="layui-footer">
+    <!-- 底部固定区域 -->
+  </div>
+{% endblock %}

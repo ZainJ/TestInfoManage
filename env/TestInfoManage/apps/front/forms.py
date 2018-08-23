@@ -1,4 +1,4 @@
-from wtforms import Form,StringField,IntegerField,PasswordField,SubmitField,BooleanField
+from wtforms import Form,StringField,IntegerField,PasswordField,SubmitField,BooleanField,TextField
 from wtforms.validators import Email,InputRequired,Length,EqualTo,DataRequired,ValidationError,InputRequired
 from ..forms import BaseForm
 from apps.front import models
@@ -13,12 +13,12 @@ class RegisterForm(BaseForm):
     email=StringField('邮箱',validators=[Email(message='无效邮箱格式'),DataRequired(message="邮箱不能为空")])
 
     #自定义用户名验证器
-    def validators_username(self,field):
+    def validate_username(self,field):
         if models.User.query.filter_by(username=field.data).first():
             raise ValidationError('用户名已注册，请选用其他名称')
 
 
-    def validators_email(self,field):
+    def validate_email(self,field):
         if models.User.query.filter_by(email=field.data).first():
             raise ValidationError('邮箱已存在，请选用其他邮箱')
 
@@ -26,3 +26,12 @@ class RegisterForm(BaseForm):
 class LoginForm(BaseForm):
     username=StringField('用户名',validators=[DataRequired(message='用户名不能为空'),Length(5,20,message='用户名为5-20字符')])
     password=PasswordField('密码',validators=[Length(6,20,message='密码为6-20字符'),InputRequired(message='密码不能为空')])
+
+
+class ProjectForm(BaseForm):
+        project=StringField('项目名',validators=[DataRequired(message='项目名不能为空'),Length(1,20,message='项目名为1-20字符内')])
+        creater=StringField('创建者',validators=[DataRequired(message='创建者不能为空'),Length(1,20,message='创建者为1-20字符内')])
+
+        def validate_project(self,field):
+            if models.ProjectModel.query.filter_by(project=field.data).first():
+                raise ValidationError('项目名已存在，请重新输入')

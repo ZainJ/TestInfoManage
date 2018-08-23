@@ -1,0 +1,63 @@
+{% extends "interfacemanage/interfacemanage.html" %}
+{% from "common/_macros.html" import static%}
+{% block header %}
+    <link rel="stylesheet" href="{{ static('css/interfacemanage/publicparameter.css') }}">
+{% endblock %}
+{% block rightcontent %}
+    <div class="layui-fluid" style="margin-top: 50px">
+        <form action="" class="layui-form">
+            <div class="layui-form-item" >
+                <div class="layui-input-inline" id="casename">
+                    <input type="text" name="casename"  placeholder="请输入参数名" autocomplete="on" class="layui-input" style="border-radius:9px">
+                </div>
+                <div class="layui-input-inline" id="projectname">
+                    <input type="text" name="projectname"  placeholder="请输入项目名" autocomplete="on" class="layui-input" style="border-radius:9px">
+                </div>
+                <div class="layui-input-inline" id="projectname">
+                    <input type="text" name="projectname"  placeholder="请输入模块名" autocomplete="on" class="layui-input" style="border-radius:9px">
+                </div>
+                <div class="layui-input-inline" id="creater">
+                    <input type="text" name="creater"  placeholder="请输入创建人" autocomplete="on" class="layui-input" style="border-radius:9px">
+                </div>
+                <div class="layui-input-inline" id="button">
+                    <button type="submit" class="layui-btn layui-btn-normal">搜索</button>
+                </div>
+
+            </div>
+        </form>
+        <table class="layui-table" lay-skin="line">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>参数名</th>
+                <th>参数值</th>
+                <th>项目名</th>
+                <th>模块名</th>
+                <th>参数描述</th>
+                <th>创建人</th>
+                <th>更新时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+             <tbody>
+             <tr>
+                 <td>1</td>
+                 <td>loginname</td>
+                 <td>admin</td>
+                 <td>自动化测试</td>
+                 <td>登录</td>
+                 <td>登录账号</td>
+                 <td>朱光精</td>
+                 <td>2018.8.16</td>
+                 <td>
+                     <div class="layui-btn-group">
+                         <button class="layui-btn layui-btn-xs">编辑</button>
+                         <button class="layui-btn layui-btn-xs">删除</button>
+                     </div>
+                 </td>
+             </tr>
+
+             </tbody>
+        </table>
+    </div>
+{% endblock %}

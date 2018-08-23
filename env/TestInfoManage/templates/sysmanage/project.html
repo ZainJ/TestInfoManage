@@ -1,0 +1,94 @@
+{% extends "interfacemanage/interfacemanage.html" %}
+{% from "common/_macros.html" import static%}
+{% block header %}
+    <link rel="stylesheet" href="{{ static('css/sysmanage/project.css') }}">
+    <script type="text/javascript" src="{{ static('js/sysmanage/sysmanage.js') }}"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock %}
+{% block title %}
+    项目管理
+{% endblock %}
+{% block rightcontent %}
+    <div class="layui-fluid" style="margin-top: 50px">
+        <form action="" class="layui-form">
+            <div class="layui-form-item" >
+                <div class="layui-input-inline" id="project">
+                    <input type="text" name="projectname" placeholder="请输入项目" autocomplete="on" class="layui-input" style="border-radius:9px">
+                </div>
+                <div class="layui-input-inline" id="projrctmanager">
+                    <input type="text" name="projrctmanager"  placeholder="请输入项目经理" autocomplete="on" class="layui-input" style="border-radius:9px">
+                </div>
+                <div class="layui-input-inline layui-btn-group" id="button">
+                    <button type="submit" class="layui-btn layui-btn-normal" id="search">搜索</button>
+                    <!-- 按钮触发模态框 -->
+                    <button type="button" class="layui-btn layui-btn-normal" onclick="openmodal()">添加</button>
+                </div>
+            </div>
+        </form>
+        <table class="layui-table" lay-skin="line">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>项目</th>
+                <th>项目描述</th>
+                <th>项目经理</th>
+                <th>更新时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+             <tbody>
+{#             <div>#}
+{#             <tr>#}
+{#                 <td>1</td>#}
+{#                 <td>自动化测试</td>#}
+{#                 <td>自动化测试</td>#}
+{#                 <td>朱光精</td>#}
+{#                 <td>8月</td>#}
+{#                 <td>#}
+{#                     <div class="layui-btn-group">#}
+{#                         <button class="layui-btn layui-btn-xs">编辑</button>#}
+{#                         <button class="layui-btn layui-btn-xs">删除</button>#}
+{#                     </div>#}
+{#                 </td>#}
+{#             </tr>#}
+{#                 </div>#}
+
+             </tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block form %}
+    <form class="layui-form" action="" style="display: none;margin-top: 50px" id="projectform">
+  <div class="layui-form-item">
+    <label class="layui-form-label">项目名</label>
+    <div class="layui-input-block" style="width: 160px">
+      <input type="text" name="project" required  lay-verify="required" placeholder="请输入项目名" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">创建者</label>
+    <div class="layui-input-block" style="width: 160px">
+      <input type="text" name="creater" required lay-verify="required" placeholder="请输入创建者" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">项目描述</label>
+    <div class="layui-input-block" style="width:600px">
+      <textarea name="projectdescription" placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <h5 id="message"></h5>
+        </div>
+        </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+{% endblock %}

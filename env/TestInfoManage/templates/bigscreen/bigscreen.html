@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% from 'common/_macros.html'import static %}
+{% block header %}
+<script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts-en.common.js"></script>
+<script src="{{ static('js/common/echart.js') }}"></script>
+<script src="{{ static('js/common/list.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <div id="main" style="width: 600px;height:400px;"></div>
+        <script type="text/javascript">
+         var chart = echarts.init(document.getElementById('main'), 'echart');
+
+        </script>
+{% endblock %}

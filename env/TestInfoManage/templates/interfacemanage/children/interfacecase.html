@@ -1,0 +1,78 @@
+{% extends "interfacemanage/interfacemanage.html" %}
+{% from "common/_macros.html" import static%}
+{% block header %}
+    <link rel="stylesheet" href="{{ static('css/interfacemanage/interfacecase.css') }}">
+{% endblock %}
+{% block rightcontent %}
+    <div class="layui-fluid" style="margin-top: 50px">
+        <form action="" class="layui-form">
+            <div class="layui-form-item" >
+                <div class="layui-input-inline" id="casename">
+                    <input type="text" name="project"  placeholder="请输入用例名" autocomplete="on" class="layui-input" style="border-radius:9px">
+                </div>
+                <div class="layui-input-inline" id="projectname">
+                    <input type="text" name="project"  placeholder="请输入项目名" autocomplete="on" class="layui-input" style="border-radius:9px">
+                </div>
+                <div class="layui-input-inline" id="creater">
+                    <input type="text" name="project"  placeholder="请输入创建人" autocomplete="on" class="layui-input" style="border-radius:9px">
+                </div>
+                <div class="layui-input-inline" id="button">
+                    <button type="submit" class="layui-btn layui-btn-normal">搜索</button>
+                </div>
+
+            </div>
+        </form>
+
+             <div class="layui-collapse" lay-accordion>
+                 <div class="layui-colla-item">
+                     <h2 class="layui-colla-title">用例1</h2>
+                     <div class="layui-colla-content">
+                             <table class="layui-table" lay-skin="line">
+                                 <tbody>
+             <tr>
+                 <td>1</td>
+                 <td>login</td>
+                 <td>自动化测试</td>
+                 <td>login</td>
+                 <td>/login</td>
+                 <td>/测试登录</td>
+                 <td>朱光精</td>
+                 <td>2018.8.16</td>
+                 <td>
+                     <div class="layui-btn-group">
+                         <button class="layui-btn layui-btn-xs">编辑</button>
+                         <button class="layui-btn layui-btn-xs">删除</button>
+                     </div>
+                 </td>
+             </tr>
+                                 <tr>
+                 <td>1</td>
+                 <td>login</td>
+                 <td>自动化测试</td>
+                 <td>login</td>
+                 <td>/login</td>
+                 <td>/测试登录</td>
+                 <td>朱光精</td>
+                 <td>2018.8.16</td>
+                 <td>
+                     <div class="layui-btn-group">
+                         <button class="layui-btn layui-btn-xs">编辑</button>
+                         <button class="layui-btn layui-btn-xs">删除</button>
+                     </div>
+                 </td>
+             </tr>
+
+             </tbody>
+                             </table>
+                     </div>
+                 </div>
+                 <div class="layui-colla-item">
+                     <h2 class="layui-colla-title">用例2</h2>
+                     <div class="layui-colla-content">
+                            <h1>test1</h1>
+                     </div>
+                 </div>
+             </div>
+
+    </div>
+{% endblock %}

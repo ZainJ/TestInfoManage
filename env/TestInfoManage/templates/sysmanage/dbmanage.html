@@ -1,0 +1,45 @@
+{% extends "interfacemanage/interfacemanage.html" %}
+{% from "common/_macros.html" import static%}
+{% block header %}
+    <link rel="stylesheet" href="{{ static('css/sysmanage/dbmanage.css') }}">
+{% endblock %}
+{% block rightcontent %}
+    <div class="layui-fluid" style="margin-top: 50px">
+        <form action="" class="layui-form">
+            <div class="layui-form-item" >
+                <div class="layui-input-inline" id="dbtype">
+                    <input type="text" name="project"  placeholder="请输入数据库类型" autocomplete="on" class="layui-input" style="border-radius:9px">
+                </div>
+                <div class="layui-input-inline" id="button">
+                    <button type="submit" class="layui-btn layui-btn-normal">搜索</button>
+                </div>
+            </div>
+        </form>
+        <table class="layui-table" lay-skin="line">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>数据库类型</th>
+                <th>数据库名称</th>
+                <th>IP</th>
+                <th>端口</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>备注</th>
+            </tr>
+            </thead>
+             <tbody>
+             <tr>
+                 <td>1</td>
+                 <td>mysql</td>
+                 <td>devops</td>
+                 <td>192.168.15.1</td>
+                 <td>33061</td>
+                 <td>admin</td>
+                 <td>password</td>
+                 <td>test</td>
+             </tr>
+             </tbody>
+        </table>
+    </div>
+{% endblock %}

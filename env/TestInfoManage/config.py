@@ -2,6 +2,7 @@ import os
 #密钥
 SECRET_KEY=os.urandom(24)
 DEBUG=True
+# DEBUG=False
 CMS_USER_ID = 'sessionid'
 #数据库配置
 DB_USERNAME='root'
