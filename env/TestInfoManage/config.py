@@ -16,3 +16,5 @@ DB_URI='mysql+pymysql://%s:%s@%s:%s/%s?charset=utf8' % (DB_USERNAME, DB_PASSWORD
 SQLALCHEMY_DATABASE_URI=DB_URI
 SQLALCHEMY_TRACK_MODIFICATION=False
 
+#flask-paginate相关配置
+PER_PAGE=10

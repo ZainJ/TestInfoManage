@@ -11,15 +11,15 @@
             <li class="layui-nav-item layui-nav-itemed">
                 <a href="javascript:;">接口管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="{{ url_for('front.interfacelist') }}">接口列表</a></dd>
-                    <dd><a href="{{ url_for('front.interfacecase') }}">接口用例</a></dd>
+                    <dd><a href="{{ url_for('front.interfacelist') }}" id="interfacelist">接口列表</a></dd>
+                    <dd><a href="{{ url_for('front.interfacecase') }}" id="interfacecase">接口用例</a></dd>
                     <dd><a href="{{ url_for('front.publicparameter') }}">公共参数</a></dd>
                     <dd><a href="{{ url_for('front.sqlmanage') }}">SQL管理</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
           <a href="javascript:;">系统管理</a>
-          <dl class="layui-nav-child">
+          <dl class="layui-nav-child" id="sysmanage">
             <dd><a href="{{ url_for('front.project') }}">项目管理</a></dd>
             <dd><a href="{{ url_for('front.moudel') }}">测试模块</a></dd>
             <dd><a href="{{ url_for('front.clientmanage') }}">客户端管理</a></dd>
@@ -30,10 +30,8 @@
     </div>
     </div>
   <!--内容主体右侧区域设置-->
-    <div class="layui-body">
+    <div class="layui-body" id="content">
     {% block rightcontent %}{% endblock %}
-    </div>
-
     <div class="layui-footer">
     <!-- 底部固定区域 -->
   </div>

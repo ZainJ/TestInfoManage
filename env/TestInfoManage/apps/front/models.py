@@ -1,14 +1,8 @@
 from exts import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-import config
-from sqlalchemy import create_engine,Column,Integer,String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-DB_URI=config.DB_URI
-engine=create_engine(DB_URI)
-Base=declarative_base(engine)
-session=sessionmaker(engine)()
+
+
 
 #用户model
 class User(db.Model):
@@ -45,4 +39,8 @@ class ProjectModel(db.Model):
     creator=db.Column(db.String(20),nullable=False,comment='创建者')
     join_time=db.Column(db.DateTime,default=datetime.now,comment='更新时间')
 
-    def
+    # def to_json(self):
+    #     dict=self.__dict__
+    #     if '_sa_instance_state' in dict:
+    #         del dict['_sa_instance_state']
+    #     return dict

@@ -12,7 +12,7 @@
 {% endblock %}
 {% block rightcontent %}
     <div class="layui-fluid" style="margin-top: 50px">
-        <form action="" class="layui-form">
+{#        <form action="" class="layui-form">#}
             <div class="layui-form-item" >
                 <div class="layui-input-inline" id="project">
                     <input type="text" name="projectname" placeholder="请输入项目" autocomplete="on" class="layui-input" style="border-radius:9px">
@@ -21,12 +21,13 @@
                     <input type="text" name="projrctmanager"  placeholder="请输入项目经理" autocomplete="on" class="layui-input" style="border-radius:9px">
                 </div>
                 <div class="layui-input-inline layui-btn-group" id="button">
-                    <button type="submit" class="layui-btn layui-btn-normal" id="search">搜索</button>
+                    <button type="button" class="layui-btn layui-btn-normal" id="search" onclick="searchproject()">搜索</button>
                     <!-- 按钮触发模态框 -->
                     <button type="button" class="layui-btn layui-btn-normal" onclick="openmodal()">添加</button>
                 </div>
             </div>
-        </form>
+
+{#        </form>#}
         <table class="layui-table" lay-skin="line">
             <thead>
             <tr>
@@ -38,25 +39,26 @@
                 <th>操作</th>
             </tr>
             </thead>
-             <tbody>
-{#             <div>#}
-{#             <tr>#}
-{#                 <td>1</td>#}
-{#                 <td>自动化测试</td>#}
-{#                 <td>自动化测试</td>#}
-{#                 <td>朱光精</td>#}
-{#                 <td>8月</td>#}
-{#                 <td>#}
-{#                     <div class="layui-btn-group">#}
-{#                         <button class="layui-btn layui-btn-xs">编辑</button>#}
-{#                         <button class="layui-btn layui-btn-xs">删除</button>#}
-{#                     </div>#}
-{#                 </td>#}
-{#             </tr>#}
-{#                 </div>#}
-
+             <tbody id="tbody">
+            {% for project in projects %}
+                <tr>
+                <td>{{ project.id }}</td>
+                <td>{{ project.project }}</td>
+                <td>{{ project.projectdescription }}</td>
+                <td>{{ project.creator }}</td>
+                <td>{{ project.join_time }}</td>
+                <td>
+                     <div class="layui-btn-group">
+                         <button class="layui-btn layui-btn-xs">编辑</button>
+                         <button class="layui-btn layui-btn-xs">删除</button>
+                     </div>
+                 </td>
+                </tr>
+             {% endfor %}
              </tbody>
         </table>
+        {{ pagination.links }}
+        {{ pagination.info }}
     </div>
 {% endblock %}
 {% block form %}

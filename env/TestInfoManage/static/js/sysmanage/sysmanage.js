@@ -17,36 +17,47 @@ function openmodal(){
 function refresh(){
                     location.reload(true);
                 }
-$(function(){
+$(function() {
     //添加项目
-    $('#submit').click(function(event){
+    $('#submit').click(function (event) {
         event.preventDefault();
-        var project=$("input[name=project]");
-        var creater=$('input[name=creater]');
-        var projectdescription=$('textarea[name=projectdescription]');
+        var project = $("input[name=project]");
+        var creater = $('input[name=creater]');
+        var projectdescription = $('textarea[name=projectdescription]');
 
-        var projectV=project.val();
-        var createrV=creater.val();
-        var projectdescriptionV=projectdescription.val();
+        var projectV = project.val();
+        var createrV = creater.val();
+        var projectdescriptionV = projectdescription.val();
         zlajax.post({
-            "url":'/project/',
-            'data':{
-                'project':projectV,
-                'creater':createrV,
-                'projectdescription':projectdescriptionV
+            "url": '/project/',
+            'data': {
+                'project': projectV,
+                'creater': createrV,
+                'projectdescription': projectdescriptionV
             },
-            'success':function(data){
-                if(data['code']=='200'){
+            'success': function (data) {
+                if (data['code'] == '200') {
                     $('#message').html(data['message']);
-                    setTimeout('refresh()',2000);
-                }else if (data['code']=='403'){
+                    setTimeout('refresh()', 2000);
+                } else if (data['code'] == '403') {
                     $('#message').html(data['message']);
                 }
             },
-            'fail':function(error){
-               xtalert.alertNetworkError()
+            'fail': function (error) {
+                xtalert.alertNetworkError();
             }
         })
-    })
+    });
 
-})
+});
+
+function searchproject(){
+    var projectname=$("input[name=projectname]");
+    var projrctmanager=$("input[name=projrctmanager]");
+    var  projectnamev=projectname.val();
+    var projrctmanagerv=projrctmanager.val();
+    $("tbody").empty();
+    zlajax.post()
+
+}
+

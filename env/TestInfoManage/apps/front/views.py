@@ -5,8 +5,11 @@ from .models import User,ProjectModel
 import config
 from .decorators import login_required,keep_login_status
 from utils import restful
+from flask_restful import Resource,Api,fields,marshal_with
+from flask import jsonify,json
+from flask_paginate import Pagination,get_page_parameter
 at = Blueprint('front', __name__)
-
+api=Api(at)
 
 @at.route('/interfacemanage/')
 @login_required
@@ -35,7 +38,16 @@ def sqlmanage():
 class Project(views.MethodView):
     decorators = [login_required]
     def get(self,message=None):
-        return render_template('sysmanage/project.html',message=message)
+        page=request.args.get(get_page_parameter(),type=int,default=1)
+        start=(page-1)*config.PER_PAGE
+        end=start+config.PER_PAGE
+        projects=ProjectModel.query.order_by(ProjectModel.join_time.desc()).slice(start,end)
+        pagination=Pagination(bs_version=3,page=page,total=ProjectModel.query.count())
+        context={
+            'projects':projects,
+            'pagination':pagination
+        }
+        return render_template('sysmanage/project.html',message=message,**context)
 
     def post(self):
         form=ProjectForm(request.form)
@@ -54,12 +66,6 @@ class Project(views.MethodView):
         else:
             message=form.get_error()
             return restful.validation_error(message=message)
-#获取所有项目
-@at.route('/getproject/')
-@login_required
-def getProject():
-    allProejct=db.session.query_property()
-    return
 
 @at.route('/moudel/')
 @login_required
@@ -133,4 +139,5 @@ class Login(views.MethodView):
 at.add_url_rule('/register/', view_func=Register.as_view('register'))
 at.add_url_rule('/', view_func=Login.as_view('login'))
 at.add_url_rule('/project/',view_func=Project.as_view('project'))
+# api.add_resource(GetProject,'/getproject/','/getproject/')
 #######################################################################
